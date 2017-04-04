@@ -3,12 +3,10 @@ article {
     .example {
       .col {
         &::before {
-          color: #fff;
           min-height: 2rem;
           border-radius: 2px;
           background-color: color(primary);
-          content: attr(class);
-          display: block;
+          content: '';
           transition: background-color 100ms linear;
         }
 
@@ -40,7 +38,7 @@ article {
 
             &::before,
             &:hover::before {
-              background-color: color(primary);
+              background-color: inherit;
             }
           }
         }

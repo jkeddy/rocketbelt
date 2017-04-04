@@ -16,41 +16,31 @@
 }
 
 .row {
-  //@include row;
-  @include clearfix;
+  @include row;
+
   .row {
     margin-right: $gutter-compensation;
     margin-left: $gutter-compensation;
   }
 
   &.reverse {
-    //@include row-direction(true);
+    @include row-direction(true);
   }
 }
 
 @mixin row-alignment-horizontal($alignment) {
-  //$justify: inherit;
+  $justify: inherit;
 
   @if ($alignment == center) {
-    text-align: center;
-    & .col{
-    //$justify: center;
-      display: inline-block;
-      float: none;
-      text-align: left; // Probably not good
-      //margin-left: auto;
-      //margin-right: auto;
-    }
+    $justify: center;
   }
   @elseif ($alignment == end) {
-   //$justify: flex-end;
-   float: right;
+    $justify: flex-end;
   }
   @elseif ($alignment == start) {
-    //$justify: flex-start;
-    float: left;
+    $justify: flex-start;
   }
-  //justify-content: $justify;
+  justify-content: $justify;
 }
 
 @mixin row-alignment-vertical($alignment) {
@@ -70,49 +60,45 @@
 }
 
 @mixin column($reverse: false) {
-  float: left;
+  display: flex;
+  flex: 0 1 auto;
   padding-right: $half-gutter-width;
   padding-bottom: $gutter-width;
   padding-left: $half-gutter-width;
-  position: relative;
-  /*@include column-direction($reverse);
+
+  @include column-direction($reverse);
   flex-grow: 0;
-  flex-shrink: 0;*/
+  flex-shrink: 0;
 }
 
 @mixin column-direction($reverse: false) {
   @if ($reverse) {
-    float: right;
+    flex-direction: column-reverse;
   }
   @else {
-    float: left;
+    flex-direction: column;
   }
 }
 
 @mixin column-span($columns-to-span: $columns, $total-columns-in-row: $columns) {
   @if ($columns-to-span == auto) {
-    width: 100%;
+    max-width: 100%;
 
-    //flex-basis: 0;
-    //flex-grow: 1;
+    flex-basis: 0;
+    flex-grow: 1;
   }
   @else {
     $span-percentage: $columns-to-span / $total-columns-in-row;
-    width: $span-percentage * 100%;
+    max-width: $span-percentage * 100%;
 
-    //flex-basis: $span-percentage * 100%;
+    flex-basis: $span-percentage * 100%;
   }
 }
 
 @mixin column-offset($columns-to-offset, $total-columns-in-row: $columns) {
-  left: ($columns-to-offset / $total-columns-in-row) * 100%;
+  margin-left: ($columns-to-offset / $total-columns-in-row) * 100%;
 }
-@mixin column-pull($columns-to-offset, $total-columns-in-row: $columns) {
-  right: ($columns-to-offset / $total-columns-in-row) * 100%;
-}
-@mixin column-push($columns-to-offset, $total-columns-in-row: $columns) {
-  left: ($columns-to-offset / $total-columns-in-row) * 100%;
-}
+
 @mixin column-order($position) {
   order: $position;
   @if ($position == last) {
@@ -136,11 +122,9 @@
   }
 }
 
-.row{
-  &.reverse{
-    .col {
-      @include column-direction($reverse: true);
-    }
+.col {
+  &.reverse {
+    @include column-direction($reverse: true);
   }
 }
 
@@ -168,18 +152,12 @@
         &-offset-#{$i} {
           @include column-offset($i);
         }
-        &-pull-#{$i}{
-          @include column-pull($i);
-        }
-        &-push-#{$i}{
-          @include column-push($i);
-        }
       }
     }
   }
 
   .row {
-    &.#{$key}-start .col{
+    &.#{$key}-start {
       @include row-alignment-horizontal(start);
     }
 
@@ -187,7 +165,7 @@
       @include row-alignment-horizontal(center);
     }
 
-    &.#{$key}-end .col{
+    &.#{$key}-end {
       @include row-alignment-horizontal(end);
     }
 
