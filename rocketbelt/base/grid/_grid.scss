@@ -107,12 +107,14 @@
 @mixin column-offset($columns-to-offset, $total-columns-in-row: $columns) {
   left: ($columns-to-offset / $total-columns-in-row) * 100%;
 }
-@mixin column-pull($columns-to-offset, $total-columns-in-row: $columns) {
-  right: ($columns-to-offset / $total-columns-in-row) * 100%;
-}
+// As a duplicate of the offset, may not be necessary
 @mixin column-push($columns-to-offset, $total-columns-in-row: $columns) {
   left: ($columns-to-offset / $total-columns-in-row) * 100%;
 }
+@mixin column-pull($columns-to-offset, $total-columns-in-row: $columns) {
+  right: ($columns-to-offset / $total-columns-in-row) * 100%;
+}
+
 @mixin column-order($position) {
   order: $position;
   @if ($position == last) {

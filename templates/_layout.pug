@@ -20,16 +20,16 @@ html(lang='en')
 
   body.grid-fluid
     #docs-wrapper.row
-      nav#docs-leftnav.nav.col.xs-12.md-3.xl-2
+      nav#docs-leftnav.nav.col.xs-12.md-2.xl-2
         a.rb-header.grid-fluid(href='/')
-          .row.xs-middle
+          .row.xs-center
             .col.xs-2.sm-1.md-8.rb-logo.rb-logo-belt
               include /assets/rocketbelt.svg
             .col.xs-10.sm-4.md-12.rb-logo.rb-logo-uri
               include /assets/rocketbelt-uri.svg
         block sidebar
           +buildNav(nav, prepend)
-      #docs-content.pad-5.col.xs-12.md-9.xl-10
+      #docs-content.pad-5.col.xs-12.md-10.xl-10
         block main
           main.grid-fluid.no-margin
             .row
