@@ -7,7 +7,8 @@
         server: {
           injectChanges: true,
           baseDir: config.buildPath
-        }
+        },
+        port: 3001
       });
     };
   };
