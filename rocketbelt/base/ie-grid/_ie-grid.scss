@@ -1,9 +1,5 @@
 @import 'tools/tools';
 
-@import 'base/base';
-@import 'components/components';
-@import 'theme/theme';
-
 .row {
   @include clearfix;
   .row {
@@ -28,10 +24,10 @@
   }
   @elseif ($alignment == end) {
    float: right;
-  }
-  @elseif ($alignment == start) {
-    float: left;
-  }
+ }
+ @elseif ($alignment == start) {
+  float: left;
+}
 }
 
 @mixin row-alignment-vertical($alignment) {
@@ -95,6 +91,7 @@
   }
 }
 
+
 .grid {
   margin-right: auto;
   margin-left: auto;
@@ -108,6 +105,8 @@
   }
 }
 
+
+
 .row{
   &.reverse{
     .col {
@@ -117,62 +116,63 @@
 }
 
 @mixin example-viewport($key) {
-  .col {
-    &.#{$key} {
-      $str: '&';
-      @for $i from 1 through $columns {
-        $str: $str + ', &-' + $i + ', &-offset-' + $i;
+ .col {
+  &.#{$key} {
+    $str: '&';
+    @for $i from 1 through $columns {
+      $str: $str + ', &-' + $i + ', &-offset-' + $i;
+    }
+
+    @at-root #{$str} {
+      @include column;
+    }
+
+    & {
+      @include column-span(auto);
+    }
+
+    @for $i from 1 through $columns {
+      &-#{$i} {
+        @include column-span($i);
       }
 
-      @at-root #{$str} {
-        @include column;
+      &-offset-#{$i} {
+        @include column-offset($i);
       }
-
-      & {
-        @include column-span(auto);
+      &-pull-#{$i}{
+        @include column-pull($i);
       }
-
-      @for $i from 1 through $columns {
-        &-#{$i} {
-          @include column-span($i);
-        }
-
-        &-offset-#{$i} {
-          @include column-offset($i);
-        }
-        &-pull-#{$i}{
-          @include column-pull($i);
-        }
-        &-push-#{$i}{
-          @include column-push($i);
-        }
+      &-push-#{$i}{
+        @include column-push($i);
       }
     }
   }
+}
 
-  .row {
-    &.#{$key}-start .col{
-      @include row-alignment-horizontal(start);
-    }
-
-    &.#{$key}-center {
-      @include row-alignment-horizontal(center);
-    }
-
-    &.#{$key}-end .col{
-      @include row-alignment-horizontal(end);
-    }
+.row {
+  &.#{$key}-start .col{
+    @include row-alignment-horizontal(start);
   }
 
-  .col {
-    &.#{$key}-first {
-      @include column-order(first);
-    }
-
-    &.#{$key}-last {
-      @include column-order(last);
-    }
+  &.#{$key}-center {
+    @include row-alignment-horizontal(center);
   }
+
+  &.#{$key}-end .col{
+    @include row-alignment-horizontal(end);
+  }
+}
+
+
+.col {
+  &.#{$key}-first {
+    @include column-order(first);
+  }
+
+  &.#{$key}-last {
+    @include column-order(last);
+  }
+}
 }
 
 @each $key, $value in $breakpoints {
@@ -190,6 +190,7 @@
     }
   }
 }
+
 
 .grid-fluid, .grid {
   &.static {

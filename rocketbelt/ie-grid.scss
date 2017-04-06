@@ -1,9 +1,5 @@
 @import 'tools/tools';
 
-@import 'base/base';
-@import 'components/components';
-@import 'theme/theme';
-
 .row {
   @include clearfix;
   .row {
@@ -95,7 +91,8 @@
   }
 }
 
-.grid {
+
+  .grid {
   margin-right: auto;
   margin-left: auto;
 
@@ -108,7 +105,9 @@
   }
 }
 
-.row{
+
+
+  .row{
   &.reverse{
     .col {
       @include column-direction($reverse: true);
@@ -117,7 +116,7 @@
 }
 
 @mixin example-viewport($key) {
-  .col {
+   .col {
     &.#{$key} {
       $str: '&';
       @for $i from 1 through $columns {
@@ -164,7 +163,8 @@
     }
   }
 
-  .col {
+
+    .col {
     &.#{$key}-first {
       @include column-order(first);
     }
@@ -191,7 +191,8 @@
   }
 }
 
-.grid-fluid, .grid {
+
+  .grid-fluid, .grid {
   &.static {
     @include example-viewport('static');
   }
