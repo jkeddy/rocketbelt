@@ -1,22 +1,10 @@
-@mixin row($reverse: false) {
-  @include row-direction($reverse);
+@import 'tools/tools';
 
-  display: flex;
-  flex: 0 1 auto;
-  flex-wrap: wrap;
-}
-
-@mixin row-direction($reverse: false) {
-  @if ($reverse) {
-    flex-direction: row-reverse;
-  }
-  @else {
-    flex-direction: row;
-  }
-}
+@import 'base/base';
+@import 'components/components';
+@import 'theme/theme';
 
 .row {
-  //@include row;
   @include clearfix;
   .row {
     margin-right: $gutter-compensation;
@@ -24,44 +12,31 @@
   }
 
   &.reverse {
-    //@include row-direction(true);
   }
 }
 
 @mixin row-alignment-horizontal($alignment) {
-  //$justify: inherit;
-
   @if ($alignment == center) {
     text-align: center;
     & .col{
-    //$justify: center;
       display: inline-block;
       float: none;
-      text-align: left; // Probably not good
-      //margin-left: auto;
-      //margin-right: auto;
+      text-align: left;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
   @elseif ($alignment == end) {
-   //$justify: flex-end;
    float: right;
   }
   @elseif ($alignment == start) {
-    //$justify: flex-start;
     float: left;
   }
-  //justify-content: $justify;
 }
 
 @mixin row-alignment-vertical($alignment) {
   @if ($alignment == middle) {
     align-items: center;
-  }
-  @else if ($alignment == bottom) {
-    align-items: flex-end;
-  }
-  @else {
-    align-items: flex-start;
   }
 }
 
@@ -75,9 +50,6 @@
   padding-bottom: $gutter-width;
   padding-left: $half-gutter-width;
   position: relative;
-  /*@include column-direction($reverse);
-  flex-grow: 0;
-  flex-shrink: 0;*/
 }
 
 @mixin column-direction($reverse: false) {
@@ -92,27 +64,25 @@
 @mixin column-span($columns-to-span: $columns, $total-columns-in-row: $columns) {
   @if ($columns-to-span == auto) {
     width: 100%;
-
-    //flex-basis: 0;
-    //flex-grow: 1;
   }
   @else {
     $span-percentage: $columns-to-span / $total-columns-in-row;
     width: $span-percentage * 100%;
-
-    //flex-basis: $span-percentage * 100%;
   }
 }
 
 @mixin column-offset($columns-to-offset, $total-columns-in-row: $columns) {
   left: ($columns-to-offset / $total-columns-in-row) * 100%;
+  margin-left: auto;
 }
 // As a duplicate of the offset, may not be necessary
 @mixin column-push($columns-to-offset, $total-columns-in-row: $columns) {
   left: ($columns-to-offset / $total-columns-in-row) * 100%;
+  margin-left: auto;
 }
 @mixin column-pull($columns-to-offset, $total-columns-in-row: $columns) {
   right: ($columns-to-offset / $total-columns-in-row) * 100%;
+  margin-right: auto;
 }
 
 @mixin column-order($position) {
@@ -191,26 +161,6 @@
 
     &.#{$key}-end .col{
       @include row-alignment-horizontal(end);
-    }
-
-    &.#{$key}-top {
-      @include row-alignment-vertical(top);
-    }
-
-    &.#{$key}-middle {
-      @include row-alignment-vertical(middle);
-    }
-
-    &.#{$key}-bottom {
-      @include row-alignment-vertical(bottom);
-    }
-
-    &.#{$key}-around {
-      @include row-spacing(space-around);
-    }
-
-    &.#{$key}-between {
-      @include row-spacing(space-between);
     }
   }
 

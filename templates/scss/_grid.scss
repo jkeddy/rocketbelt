@@ -6,7 +6,9 @@ article {
           min-height: 2rem;
           border-radius: 2px;
           background-color: color(primary);
-          content: attr('class');
+          color: #fff;
+          content: attr(class);
+          display: block;
           transition: background-color 100ms linear;
         }
 
