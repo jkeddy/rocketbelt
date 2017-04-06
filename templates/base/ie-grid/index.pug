@@ -5,40 +5,40 @@ block vars
 
 block content
   article.grid-article
-    h1 Grid
-    | Here is some short front matter about the grid.
-
+    h1 IE 9 Fallback Grid
+    | This is an IE9 fallback grid using floats instead of Flexbox. It drops several Flexbox features, but aims to deliver the basic grid to IE9. Please set your emulation mode to IE9 to see a demo.
     h2 Simple Syntax
     | Get started with as few as four classes.
 
     +exampleWithCode
-      include _grid-basic.pug
+      include ../grid/_grid-basic.pug
 
     h2 Mobile-First & Responsive
     | Start with #[span.code xs], then mix and match responsive modifiers.
 
     +exampleWithCode
-      include _grid-responsive.pug
+      include ../grid/_grid-responsive.pug
 
     h2 Column Offsets
     | Nudge a column to the right with an `-offset` class.
 
     +exampleWithCode
-      include _grid-column-offsets.pug
+      include ../grid/_grid-column-offsets.pug
 
     h2 Nesting
 
     +exampleWithCode
-      include _grid-nested.pug
+      include ../grid/_grid-nested.pug
 
     h2 Alignment Classes
     h3 Horizontal
     h4 -start, -center, -end
 
     +exampleWithCode
-      include _grid-alignment-horizontal.pug
+      include ../grid/_grid-alignment-horizontal.pug
 
     h2 Column Order
+    | Utilizaing these features in IE9 requires additional "-push" and "-pull" classes.
     
     h3 Use offset/pull classes to move columns
     +exampleWithCode
@@ -55,4 +55,4 @@ block content
     h3 reverse
 
     +exampleWithCode
-      include _grid-order-reverse.pug
+      include ../grid/_grid-order-reverse.pug

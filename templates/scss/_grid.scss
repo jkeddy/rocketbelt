@@ -6,7 +6,7 @@ article {
           min-height: 2rem;
           border-radius: 2px;
           background-color: color(primary);
-          content: '';
+          content: attr('class');
           transition: background-color 100ms linear;
         }
 
