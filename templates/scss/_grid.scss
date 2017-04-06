@@ -14,10 +14,9 @@ article {
 
         &:hover::before {
           background-color: color(primary, lighter);
-
           transition: background-color 100ms linear;
         }
-
+        
         &[class$='first'],
         &[class$='last'] {
           &::before {

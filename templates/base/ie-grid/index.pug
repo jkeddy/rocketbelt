@@ -1,0 +1,58 @@
+extends /_layout.pug
+
+block vars
+  - var title = 'Internet Explorer Grid'
+
+block content
+  article.grid-article
+    h1 Grid
+    | Here is some short front matter about the grid.
+
+    h2 Simple Syntax
+    | Get started with as few as four classes.
+
+    +exampleWithCode
+      include _grid-basic.pug
+
+    h2 Mobile-First & Responsive
+    | Start with #[span.code xs], then mix and match responsive modifiers.
+
+    +exampleWithCode
+      include _grid-responsive.pug
+
+    h2 Column Offsets
+    | Nudge a column to the right with an `-offset` class.
+
+    +exampleWithCode
+      include _grid-column-offsets.pug
+
+    h2 Nesting
+
+    +exampleWithCode
+      include _grid-nested.pug
+
+    h2 Alignment Classes
+    h3 Horizontal
+    h4 -start, -center, -end
+
+    +exampleWithCode
+      include _grid-alignment-horizontal.pug
+
+    h2 Column Order
+    
+    h3 Use offset/pull classes to move columns
+    +exampleWithCode
+      include _grid-order-push.pug
+    
+    h3 first &amp; last
+
+    +exampleWithCode
+      include _grid-order-first.pug
+
+    +exampleWithCode
+      include _grid-order-last.pug
+
+    h3 reverse
+
+    +exampleWithCode
+      include _grid-order-reverse.pug
