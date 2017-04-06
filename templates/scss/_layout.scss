@@ -71,8 +71,6 @@ body { min-height: 100%; }
 #docs-leftnav {
   @include media('>=md') {
     flex: 0 0 220px;
-    max-width: 180px;
-    position: fixed;
   }
 
   overflow-y: auto;

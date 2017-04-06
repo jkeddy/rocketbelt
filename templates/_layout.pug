@@ -16,23 +16,20 @@ html(lang='en')
       link(rel='stylesheet', href=prepend + '/css/rocketbelt.creative.min.css')
       link(rel='stylesheet', href=prepend + '/css/rocketbelt.min.css')
       link(rel='stylesheet', href=prepend + '/css/site.min.css')
-      <!--[if lte IE 9]>
-        <link rel="stylesheet" href="/css/ie-grid.min.css">
-      <![endif]-->
       script(src='https://code.jquery.com/jquery-2.2.4.min.js')
 
   body.grid-fluid
     #docs-wrapper.row
-      nav#docs-leftnav.nav.col.xs-12.md-2.xl-2
+      nav#docs-leftnav.nav.col.xs-12.md-3.xl-2
         a.rb-header.grid-fluid(href='/')
-          .row.xs-center
+          .row.xs-middle
             .col.xs-2.sm-1.md-8.rb-logo.rb-logo-belt
               include /assets/rocketbelt.svg
             .col.xs-10.sm-4.md-12.rb-logo.rb-logo-uri
               include /assets/rocketbelt-uri.svg
         block sidebar
           +buildNav(nav, prepend)
-      #docs-content.pad-5.col.xs-12.md-10.xl-10
+      #docs-content.pad-5.col.xs
         block main
           main.grid-fluid.no-margin
             .row
@@ -51,5 +48,6 @@ html(lang='en')
     script(src=prepend + '/js/prism.js')
     script(src=prepend + '/js/clipboard.min.js')
 
+    include /base/layout/_rocketbelt.flexibility.pug
     include _analytics.pug
     block scripts
