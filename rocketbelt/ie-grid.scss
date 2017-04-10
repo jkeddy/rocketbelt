@@ -1,3 +1,4 @@
+// IE Grid fallback. Contains a few empty mixins in case we ever need to fulfill said mixins.
 @import 'tools/tools';
 
 .row {
@@ -32,12 +33,12 @@
 
 @mixin row-alignment-vertical($alignment) {
   @if ($alignment == middle) {
-    align-items: center;
+    
   }
 }
 
 @mixin row-spacing($spacing) {
-  justify-content: $spacing;
+  
 }
 
 @mixin column($reverse: false) {
@@ -71,7 +72,7 @@
   left: ($columns-to-offset / $total-columns-in-row) * 100%;
   margin-left: auto;
 }
-// As a duplicate of the offset, may not be necessary
+// As a duplicate of the offset, may not be necessary. Keeping as separate entities makes sense to me, however. - JK
 @mixin column-push($columns-to-offset, $total-columns-in-row: $columns) {
   left: ($columns-to-offset / $total-columns-in-row) * 100%;
   margin-left: auto;
@@ -82,12 +83,12 @@
 }
 
 @mixin column-order($position) {
-  order: $position;
+  
   @if ($position == last) {
-    $position: 9999;
+   
   }
   @else if ($position == first) {
-    $position: -9999;
+    
   }
 }
 
